@@ -1,3 +1,8 @@
 /zig-cache
 /main
 
+
+
+# Added by cargo
+
+/target

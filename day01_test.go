@@ -1,10 +1,8 @@
-package day01
+package main
 
 import (
 	"fmt"
 	"testing"
-
-	"github.com/rafael-luigi-bekkema/advent-of-code-2015/utils"
 )
 
 func TestDay01a(t *testing.T) {
@@ -16,7 +14,7 @@ func TestDay01a(t *testing.T) {
 		{"()()", 0},
 		{"(()(()(", 3},
 		{")())())", -3},
-		{utils.Input(1), 232},
+		{Input(1), 232},
 	}
 	for i, tc := range tt {
 		t.Run(fmt.Sprintf("case %d", i+1), func(t *testing.T) {
@@ -35,7 +33,7 @@ func TestDay01b(t *testing.T) {
 	}{
 		{")", 1},
 		{"()())", 5},
-		{utils.Input(1), 1783},
+		{Input(1), 1783},
 	}
 	for i, tc := range tt {
 		t.Run(fmt.Sprintf("case %d", i+1), func(t *testing.T) {

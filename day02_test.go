@@ -1,10 +1,8 @@
-package day02
+package main
 
 import (
 	"strings"
 	"testing"
-
-	"github.com/rafael-luigi-bekkema/advent-of-code-2015/utils"
 )
 
 func TestDay2a(t *testing.T) {
@@ -26,7 +24,7 @@ func TestDay2a(t *testing.T) {
 }
 
 func TestDay2aInput(t *testing.T) {
-	f := utils.InputReader(2)
+	f := InputReader(2)
 	defer f.Close()
 	result := day2a(f)
 	expect := 1598415
@@ -54,7 +52,7 @@ func TestDay2b(t *testing.T) {
 }
 
 func TestDay2bInput(t *testing.T) {
-	f := utils.InputReader(2)
+	f := InputReader(2)
 	defer f.Close()
 	result := day2b(f)
 	expect := 3812909

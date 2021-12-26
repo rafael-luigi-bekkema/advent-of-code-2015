@@ -61,3 +61,9 @@ func day6b(input []string) int {
 	}
 	return Sum(lights[:])
 }
+
+func Day6() {
+	input := Lines(6)
+	fmt.Println("day 6a:", day6a(input))
+	fmt.Println("day 6b:", day6b(input))
+}

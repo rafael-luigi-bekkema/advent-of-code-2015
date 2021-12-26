@@ -25,15 +25,24 @@ NOT y -> i`
 		"x": 123,
 		"y": 456,
 	}
-	result := day7a(strings.Split(input, "\n"))
+	result := day7a(strings.Split(input, "\n"), nil)
 	if !reflect.DeepEqual(result, expect) {
 		t.Fatalf("expected %v, got %v", expect, result)
 	}
 }
 
 func TestDay7aFile(t *testing.T) {
-	expect := uint16(100)
-	result := day7a(Lines(7))
+	expect := uint16(46065)
+	result := day7a(Lines(7), nil)
+	if result["a"] != expect {
+		t.Fatalf("expected %v, got %v", expect, result["a"])
+	}
+}
+
+func TestDay7bFile(t *testing.T) {
+	expect := uint16(14134)
+	resultA := day7a(Lines(7), nil)["a"]
+	result := day7a(Lines(7), map[string]uint16{"b": resultA})
 	if result["a"] != expect {
 		t.Fatalf("expected %v, got %v", expect, result["a"])
 	}

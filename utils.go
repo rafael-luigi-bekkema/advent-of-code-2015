@@ -7,6 +7,7 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"strconv"
 )
 
 const inputDir = "input"
@@ -94,4 +95,8 @@ func Reduce[A, T any](f func(A, T) A, acc A, list []T) A {
 		acc = f(acc, l)
 	}
 	return acc
+}
+
+func atoi(v string) int {
+	return Must(strconv.Atoi(v))
 }

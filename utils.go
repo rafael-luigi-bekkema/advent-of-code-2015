@@ -140,6 +140,10 @@ type Set[T comparable] struct {
 	values []T
 }
 
+func (s *Set[T]) String() string {
+	return fmt.Sprint(s.values)
+}
+
 func NewSet[T comparable](items ...T) *Set[T] {
 	var s Set[T]
 	for _, item := range items {
@@ -159,6 +163,10 @@ func (s *Set[T]) Add(items ...T) {
 		s.keys[item] = struct{}{}
 		s.values = append(s.values, item)
 	}
+}
+
+func (s *Set[T]) Len() int {
+	return len(s.values)
 }
 
 func (s *Set[T]) Values() []T {

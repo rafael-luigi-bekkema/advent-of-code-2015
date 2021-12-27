@@ -123,3 +123,31 @@ func Range[T constraints.Integer](min, max T) (result []T) {
 	}
 	return
 }
+
+type Set[T comparable] struct {
+	keys   map[T]struct{}
+	values []T
+}
+
+func NewSet[T comparable](items ...T) *Set[T] {
+	var s Set[T]
+	for _, item := range items {
+		s.Add(item)
+	}
+	return &s
+}
+
+func (s *Set[T]) Add(item T) {
+	if _, ok := s.keys[item]; ok {
+		return
+	}
+	if s.keys == nil {
+		s.keys = make(map[T]struct{})
+	}
+	s.keys[item] = struct{}{}
+	s.values = append(s.values, item)
+}
+
+func (s *Set[T]) Values() []T {
+	return s.values
+}

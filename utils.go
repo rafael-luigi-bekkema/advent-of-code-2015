@@ -95,8 +95,8 @@ func Sum[T constraints.Ordered](list []T) T {
 
 func Map[T, U any](f func(T) U, list []T) []U {
 	result := make([]U, len(list))
-	for _, i := range list {
-		result = append(result, f(i))
+	for idx, i := range list {
+		result[idx] = f(i)
 	}
 	return result
 }

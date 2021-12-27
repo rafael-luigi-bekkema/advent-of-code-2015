@@ -57,9 +57,9 @@ func Min(nums ...int) (n int) {
 	return
 }
 
-func In[T comparable](items ...T) bool {
-	for _, i := range items[1:] {
-		if i == items[0] {
+func In[T comparable](item T, items ...T) bool {
+	for _, i := range items {
+		if i == item {
 			return true
 		}
 	}
@@ -99,4 +99,27 @@ func Reduce[A, T any](f func(A, T) A, acc A, list []T) A {
 
 func atoi(v string) int {
 	return Must(strconv.Atoi(v))
+}
+
+func Combos[T comparable](items []T, f func([]T)) {
+	var combos func(combo []T)
+	combos = func(combo []T) {
+		if len(combo) == len(items) {
+			f(combo)
+			return
+		}
+		for _, i := range items {
+			if !In(i, combo...) {
+				combos(append(combo, i))
+			}
+		}
+	}
+	combos(nil)
+}
+
+func Range[T constraints.Integer](min, max T) (result []T) {
+	for i := min; i <= max; i++ {
+		result = append(result, i)
+	}
+	return
 }

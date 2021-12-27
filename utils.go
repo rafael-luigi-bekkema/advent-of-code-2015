@@ -8,6 +8,7 @@ import (
 	"os"
 	"path/filepath"
 	"strconv"
+	"testing"
 )
 
 const inputDir = "input"
@@ -162,4 +163,16 @@ func (s *Set[T]) Add(items ...T) {
 
 func (s *Set[T]) Values() []T {
 	return s.values
+}
+
+func TestEqual[T comparable](t *testing.T, expect, result T, message ...string) {
+	var msg string
+	if len(message) > 0 {
+		msg = message[0]
+	}
+	t.Run(msg, func(t *testing.T) {
+		if result != expect {
+			t.Fatalf("expected %v, got %v", expect, result)
+		}
+	})
 }

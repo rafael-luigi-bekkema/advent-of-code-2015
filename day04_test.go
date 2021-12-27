@@ -3,6 +3,9 @@ package main
 import "testing"
 
 func TestDay4(t *testing.T) {
+	    if testing.Short() {
+		t.Skip("skipping test in short mode.")
+	    }
 	tt := []struct {
 		input  string
 		zeroes int

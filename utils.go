@@ -166,11 +166,13 @@ func (s *Set[T]) Values() []T {
 }
 
 func TestEqual[T comparable](t *testing.T, expect, result T, message ...string) {
+	t.Helper()
 	var msg string
 	if len(message) > 0 {
 		msg = message[0]
 	}
 	t.Run(msg, func(t *testing.T) {
+		t.Helper()
 		if result != expect {
 			t.Fatalf("expected %v, got %v", expect, result)
 		}

@@ -40,7 +40,17 @@ func Lines(day int) []string {
 }
 
 func inputPath(day int) string {
-	return Must(filepath.Abs(fmt.Sprintf("%s/day%02d.txt", inputDir, day)))
+	var postfix string
+	if day > 25 {
+		n := day / 25
+		day = (day-1)%25 + 1
+		var s string
+		if n > 1 {
+			s = fmt.Sprint(n)
+		}
+		postfix = fmt.Sprintf("_test%s", s)
+	}
+	return Must(filepath.Abs(fmt.Sprintf("%s/day%02d%s.txt", inputDir, day, postfix)))
 }
 
 func Input(day int) string {
@@ -137,15 +147,17 @@ func NewSet[T comparable](items ...T) *Set[T] {
 	return &s
 }
 
-func (s *Set[T]) Add(item T) {
-	if _, ok := s.keys[item]; ok {
-		return
+func (s *Set[T]) Add(items ...T) {
+	for _, item := range items {
+		if _, ok := s.keys[item]; ok {
+			continue
+		}
+		if s.keys == nil {
+			s.keys = make(map[T]struct{})
+		}
+		s.keys[item] = struct{}{}
+		s.values = append(s.values, item)
 	}
-	if s.keys == nil {
-		s.keys = make(map[T]struct{})
-	}
-	s.keys[item] = struct{}{}
-	s.values = append(s.values, item)
 }
 
 func (s *Set[T]) Values() []T {

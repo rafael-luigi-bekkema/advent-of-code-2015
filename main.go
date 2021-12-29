@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 )
 
 func main() {
@@ -14,4 +15,8 @@ func main() {
 	Day6()
 	Day7()
 	Day8()
+}
+
+func init() {
+	log.SetFlags(0)
 }

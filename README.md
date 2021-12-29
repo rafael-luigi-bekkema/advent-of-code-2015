@@ -2,3 +2,4 @@
 https://adventofcode.com/2015
 
 With tests. 50 stars.
+Using Go generics, sometimes unnecessarily.

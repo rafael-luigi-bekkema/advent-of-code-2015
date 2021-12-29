@@ -88,9 +88,17 @@ func Add[T constraints.Ordered](a, b T) T {
 	return a + b
 }
 
+func Mul[T constraints.Integer | constraints.Float](a, b T) T {
+	return a * b
+}
+
 func Sum[T constraints.Ordered](list []T) T {
 	var s T
 	return Reduce(Add[T], s, list)
+}
+
+func Prod[T constraints.Integer | constraints.Float](list []T) T {
+	return Reduce(Mul[T], list[0], list[1:])
 }
 
 func Map[T, U any](f func(T) U, list []T) []U {

@@ -1,8 +1,6 @@
 package main
 
-import (
-	"constraints"
-)
+import "golang.org/x/exp/constraints"
 
 func pow[T constraints.Integer](v, n T) (result T) {
 	if n == 0 {

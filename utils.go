@@ -2,13 +2,14 @@ package main
 
 import (
 	"bufio"
-	"constraints"
 	"fmt"
 	"io"
 	"os"
 	"path/filepath"
 	"strconv"
 	"testing"
+
+	"golang.org/x/exp/constraints"
 )
 
 const inputDir = "input"
